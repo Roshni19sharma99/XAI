@@ -30,9 +30,21 @@ class DataLoader():
         #dropping unwanted columns
         self.data.drop(["id"], axis=1, inplace=True)
     
+    #spliting the dataset into training and test dataset
     def get_data_split(self):
         x = self.data.iloc[:,:-1]
         y = self.data.iloc[:,-1]
         return train_test_split(x,y,test_size=0.20, random_state=2021)
 
-        
+     #Smapling the dataset
+    def oversample(self, X_train, y_train):
+        oversample = RandomOverSampler(sampling_strategy='minority')
+        #convert Numpy and oversample
+        x_np = X_train.to_numpy()
+        y_np = y_train.to_numpy()
+        x_np,y_np = oversample.fit_resample(x_np,y_np)
+        #convert back to pandas
+        x_over = pd.DataFrame(x_np, columns=X_train.columns)
+        y_over = pd.DataFrame(y_np, name=y_train.name)
+        return x_over, y_over
+
