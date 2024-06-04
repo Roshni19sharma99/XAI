@@ -7,7 +7,7 @@ class DataLoader():
     def __init__(self):
         self.data = None
     
-    def load_dataset(self, path="C:\Users\roshni_sharma\Documents\Personal\Learnings\XAI learnings\XAI\Data\healthcare-dataset-stroke-data.csv"):
+    def load_dataset(self, path="C:\\Users\\roshni_sharma\\Documents\\Personal\\Learnings\\XAI learnings\\XAI\\Data\\healthcare-dataset-stroke-data.csv"):
         self.data = pd.read_csv(path)
 
     def preprocess_data(self):
