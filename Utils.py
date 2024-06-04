@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import RandomOverSampler
 
 class DataLoader():
-    def __init__(self):
+    def __init__(self, **kwargs):
         self.data = None
     
     def load_dataset(self, path="C:\\Users\\roshni_sharma\\Documents\\Personal\\Learnings\\XAI learnings\\XAI\\Data\\healthcare-dataset-stroke-data.csv"):
@@ -45,6 +45,6 @@ class DataLoader():
         x_np,y_np = oversample.fit_resample(x_np,y_np)
         #convert back to pandas
         x_over = pd.DataFrame(x_np, columns=X_train.columns)
-        y_over = pd.DataFrame(y_np, name=y_train.name)
+        y_over = pd.Series(y_np, name=y_train.name)
         return x_over, y_over
 
