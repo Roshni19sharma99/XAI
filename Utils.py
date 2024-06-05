@@ -18,7 +18,7 @@ class DataLoader():
                            "Residence_type",
                            "smoking_status"]
         encoded = pd.get_dummies(self.data[categorical_col],
-                                 prefix=categorical_col)
+                                 prefix=categorical_col,dtype=float)
         
         #Update data with new columns
         self.data = pd.concat([encoded, self.data], axis=1)
